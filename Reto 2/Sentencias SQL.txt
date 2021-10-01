@@ -1,0 +1,21 @@
+--Creación tabla Room
+CREATE TABLE ROOM
+(
+    ID NUMBER(10) NOT NULL,
+    ROOM VARCHAR2(20) NULL,
+    STARS NUMBER(10) NULL,
+    CATEGORY_ID NUMBER(10) NULL,
+    DESCRIPTION VARCHAR2(4000) NULL,
+    PRIMARY KEY(ID)
+);
+
+--Creación secuencia cliente
+CREATE SEQUENCE client_seq START WITH 1 INCREMENT BY 1;
+
+--Creación disparador cliente
+CREATE OR REPLACE TRIGGER client_trigger
+    BEFORE INSERT ON CLIENT FOR EACH ROW
+    WHEN (NEW.ID IS NULL)
+    BEGIN
+        SELECT client_seq.NEXTVAL INTO : NEW.ID FROM DUAL;
+    END;
