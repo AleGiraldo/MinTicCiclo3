@@ -19,6 +19,10 @@ CREATE OR REPLACE TRIGGER client_trigger
     BEGIN
         SELECT client_seq.NEXTVAL INTO : NEW.ID FROM DUAL;
     END;
+
+--GET
+SELECT * FROM ROOM
+
 --PUT
 BEGIN
     update ROOM set ID=:id, ROOM=:room, STARS=:stars, CATEGORY_ID=:category_id, DESCRIPTION=:description;
