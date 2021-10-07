@@ -1,0 +1,115 @@
+CREATE TABLE CLIENT
+(
+    ID NUMBER NOT NULL,
+    NAME VARCHAR(4000) NULL,
+    EMAIL VARCHAR2(20) NULL,
+    AGE NUMBER NULL,
+
+    PRIMARY KEY (ID)
+);
+
+CREATE TABLE MESSAGE
+(
+    ID NUMBER NOT NULL,
+    MESSAGETEXT VARCHAR2(4000),
+
+    PRIMARY KEY (ID)
+);
+
+-- SENTENCIAS ROOM
+
+--GET
+SELECT * FROM room
+
+--POST
+BEGIN
+    INSERT INTO room
+    (ID, ROOM, STARS, CATEGORY_ID, DESCRIPTION)
+    VALUES
+    (:id, :room, :stars, :category_id, :description);
+    :status_code:=201;
+END;
+
+--PUT
+BEGIN
+	UPDATE ROOM
+	SET
+		ROOM = :room,
+		STARS = :stars,
+		CATEGORY_ID = :category_id,
+		DESCRIPTION = :description
+	WHERE ID = :id;
+	:status_code:=201;
+END;
+
+--DELETE
+BEGIN
+    DELETE FROM room
+    WHERE ID=:id;
+    :status_code:=204;
+END;
+
+--SENTENCIAS CLIENT
+
+--GET
+SELECT * FROM CLIENT
+
+--POST
+BEGIN
+    INSERT INTO CLIENT
+    (ID, NAME, EMAIL, AGE)
+    VALUES
+    (:id, :name, :email, :age);
+    :status_code:=201;
+END;
+
+--PUT
+BEGIN
+    UPDATE CLIENT
+    SET ID=:id,
+        NAME=:name,
+        EMAIL=:email,
+        AGE=:age
+    WHERE ID = :id;
+    :status_code:=201;
+END;
+
+--DELETE
+BEGIN
+    DELETE FROM CLIENT
+    WHERE ID=:id;
+    :status_code:=204;
+END;
+
+
+--SENTENCIAS MESSAGE
+
+--GET
+SELECT * FROM MESSAGE
+
+--POST
+BEGIN
+    INSERT INTO MESSAGE
+    (ID, MESSAGETEXT)
+    VALUES
+    (:id, :messagetext);
+    :status_code:=201;
+END;
+
+--PUT
+BEGIN
+    UPDATE MESSAGE
+    SET ID=:id,
+        MESSAGETEXT=:messagetext
+    WHERE ID = :id;
+    :status_code:=201;
+END;
+
+--DELETE
+BEGIN
+    DELETE FROM MESSAGE
+    WHERE ID=:id;
+    :status_code:=204;
+END;
+
+
