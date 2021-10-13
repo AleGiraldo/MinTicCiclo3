@@ -1,1 +1,36 @@
 # Reto 2
+-- CLIENTES TABLA 
+-- CREACION
+CREATE TABLE CLIENT
+(
+    ID NUMBER(10) NOT NULL,
+    NAME VARCHAR(4000) NULL,
+    EMAIL VARCHAR2(20) NULL,
+    AGE NUMBER(10) NULL,
+    PRIMARY KEY(ID)
+);
+-- GET
+SELECT * FROM CLIENT
+-- POST
+BEGIN
+    INSERT INTO CLIENT
+    (ID,NAME,EMAIL,AGE) 
+    VALUES
+    (:id, :name, :email, :age);
+    :status_code:=201;
+END;
+-- PUT
+BEGIN
+    UPDATE CLIENT
+    SET NAME =:name, EMAIL=:email, AGE=:age
+       WHERE ID = :id;
+      :status_code:=201;
+END;
+-- DELETE
+BEGIN
+    DELETE FROM CLIENT 
+    WHERE ID=:id;
+    :status_code:=204;
+END;
+-- PLANTILLA ID DE CLIENTES
+SELECT * FROM CLIENT WHERE id = :id
