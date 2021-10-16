@@ -1,6 +1,6 @@
 package com.usa.ciclo3.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.Date;
@@ -12,12 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import lombok.Data;
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
 /**
@@ -31,14 +30,11 @@ public class Reservation implements Serializable{
     
     @Id //Pone como llave principal al ID
     @GeneratedValue(strategy = GenerationType.IDENTITY) //Genera un autoincremental
-    @Column(name="idReservation")
     private Integer idReservation;
     
-    @Column(name="startDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date startDate;
     
-    @Column(name="devolutionDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date devolutionDate;
     
@@ -54,8 +50,13 @@ public class Reservation implements Serializable{
 
     //Relación Room-Reservations
     @ManyToOne
-    @JoinColumn(name="description") //Con qué columna se une? //name genera error //Intentar one to one
+    @JoinColumn(name="description")
     @JsonIgnoreProperties("reservations")
     private Room room;
+    
+    //Relación Reservation-Score
+    @OneToOne(cascade = {CascadeType.REMOVE},mappedBy="reservation")
+    @JsonIgnoreProperties("reservation")
+    private Score score;
 
 }

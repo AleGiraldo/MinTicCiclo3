@@ -24,19 +24,14 @@ public class Client implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idClient")
     private Integer idClient;
     
-    @Column(name="email", columnDefinition="varchar(45)")
     private String email;
     
-    @Column(name="password", columnDefinition="varchar(45)")
     private String password;
     
-    @Column(name="name", columnDefinition="varchar(45)")
     private String name;
     
-    @Column(name="age", columnDefinition="number")
     private Integer age;
     
     //Relación Client-Messages

@@ -26,10 +26,8 @@ public class Category implements Serializable{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(name="name", columnDefinition="varchar(45)")
     private String name;
     
-    @Column(name="description", columnDefinition="varchar(250)")
     private String description;
     
     //Relación Category-Rooms

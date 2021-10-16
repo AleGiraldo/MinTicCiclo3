@@ -13,26 +13,3 @@ public class AppHotelApplication {
 	}
 
 }
-
-/*
-@Entity
-@Table(name = "score")
-public class Score implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idScore;
-    private String messageText;
-    private Integer stars;
-
-    @OneToOne
-    @JsonIgnoreProperties("score")
-    private Reservation reservation;
-
-En reservation
-@OneToOne(cascade = {CascadeType.REMOVE},mappedBy="reservation")
-    @JsonIgnoreProperties("reservation")
-    private Score score;
-
-
-
-*/

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,16 +26,12 @@ public class Room implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY) //Genera un autoincremental
     private Integer id;
     
-    @Column(name="name", columnDefinition="varchar(45)")
     private String name;
     
-    @Column(name="hotel", columnDefinition="varchar(45)")
     private String hotel;
     
-    @Column(name="stars", columnDefinition="number(1)")
     private Integer stars;
     
-    @Column(name="description", columnDefinition="varchar(250)")
     private String description;
     
     //Relación Category-Room
