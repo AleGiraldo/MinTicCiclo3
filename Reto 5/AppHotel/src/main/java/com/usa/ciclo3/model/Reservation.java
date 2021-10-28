@@ -17,6 +17,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 /**
  *
@@ -40,18 +41,17 @@ public class Reservation implements Serializable{
     @Column(name="status")
     private String status = "created";
     
-    //Relación Client-Reservations
-    @ManyToOne
-    @JoinColumn(name="name")
-    @JsonIgnoreProperties("reservations")
-    private Client client;
-    
-
     //Relación Room-Reservations
     @ManyToOne
     @JoinColumn(name="description")
     @JsonIgnoreProperties("reservations")
     private Room room;
+    
+    //Relación Client-Reservations
+    @ManyToOne
+    @JoinColumn(name="name")
+    @JsonIgnoreProperties({"reservations", "messages"})
+    private Client client;
     
     //Relación Reservation-Score
     @OneToOne(cascade = {CascadeType.REMOVE},mappedBy="reservation")
