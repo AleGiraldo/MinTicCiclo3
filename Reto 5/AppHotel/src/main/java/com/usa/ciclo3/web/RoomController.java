@@ -53,7 +53,7 @@ public class RoomController {
         return roomService.update(room);
     }
     
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public Boolean delRoom(@PathVariable Integer id){
         return roomService.delRoom(id);

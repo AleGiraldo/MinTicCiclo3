@@ -40,7 +40,7 @@ public class MessageController {
         return messageService.getAll();
     }
     
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public Optional<Message> getAll(@PathVariable("id") Integer id){
         return messageService.getMessage(id);
     }
@@ -57,7 +57,7 @@ public class MessageController {
         return messageService.update(message);
     }
     
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public Boolean delMessage(@PathVariable Integer id){
         return messageService.delMessage(id);

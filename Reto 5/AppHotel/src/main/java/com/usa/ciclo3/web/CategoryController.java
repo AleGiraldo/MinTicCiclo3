@@ -35,7 +35,7 @@ public class CategoryController {
         return categoryService.getAll();
     }
     
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public Optional<Category> getCategory(@PathVariable("id") Integer id){
         return categoryService.getCategory(id);
     }
@@ -52,7 +52,7 @@ public class CategoryController {
         return categoryService.update(category);
     }
     
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public Boolean delCategory(@PathVariable Integer id){
         return categoryService.delCategory(id);

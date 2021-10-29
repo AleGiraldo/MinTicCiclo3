@@ -42,7 +42,7 @@ public class ReservationController {
         return reservationService.getAll();
     }
     
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public Optional<Reservation> getReservation(@PathVariable Integer id){
         return reservationService.getReservation(id);
     }
@@ -59,7 +59,7 @@ public class ReservationController {
         return reservationService.update(reservation);
     }
     
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public Boolean delReservation(@PathVariable Integer id){
         return reservationService.delReservation(id);
